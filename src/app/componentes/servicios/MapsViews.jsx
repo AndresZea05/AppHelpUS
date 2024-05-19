@@ -16,7 +16,7 @@ const MapsViews = ({ center }) => {
   }, [center]);
 
   return (
-    <MapContainer center={center} zoom={15} ref={mapRef}>
+    <MapContainer center={center} zoom={16} ref={mapRef}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

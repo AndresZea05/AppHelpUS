@@ -19,10 +19,10 @@ const Reservas = () => {
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const data = await db.collection('Libros').get();
+        const data = await db.collection('Alojamientos').get();
         const arrayData = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        const librosDisponibles = arrayData.filter((libro) => libro.Disponibilidad === true);
-        setLista(librosDisponibles);
+        const AlojamientosDisponibles = arrayData.filter((libro) => libro.Disponibilidad === true);
+        setLista(AlojamientosDisponibles);
       } catch (error) {
         console.error(error);
       }
@@ -31,19 +31,19 @@ const Reservas = () => {
     obtenerDatos();
   }, []);
 
-  const ReservarLibro = async (elemento) => {
+  const ReservarAlojamiento = async (elemento) => {
     try {
       const usuario = user.email;
 
       const datos = await db.collection(usuario).add({
-        idlibro: elemento.id,
+        idalojamiento: elemento.id,
         Nombres: elemento.Nombre,
-        año: elemento.año,
+        Precio: elemento.Precio,
         Descripcion: elemento.Descripcion,
-        Autor: elemento.Autor,
+        Direccion: elemento.Direccion,
       });
 
-      await db.collection('Libros').doc(elemento.id).update({
+      await db.collection('Alojamientos').doc(elemento.id).update({
         Disponibilidad: false,
       });
 
@@ -62,7 +62,7 @@ const Reservas = () => {
     }
   };
 
-  const BuscarLibro = (e) => {
+  const BuscarAlojamiento = (e) => {
     setBusqueda(e.target.value);
   };
 
@@ -75,35 +75,35 @@ const Reservas = () => {
   return (
     <div className='Reservas'>
       <div className="titulo-seccion">
-        <h3>Libros</h3>
+        
       </div>
 
       <div className="busqueda">
         <input
           className='form-control'
           type="text"
-          placeholder="Buscar libro"
+          placeholder="Buscar Alojamiento"
           value={busqueda}
-          onChange={BuscarLibro}
+          onChange={BuscarAlojamiento}
         />
       </div>
 
       <div className="contenedor-cards">
         <div className="card-grid">
           {listaFiltrada.length === 0 ? (
-            <p>No se encontraron libros.</p>
+            <p>No se encontraron Alojamientos.</p>
           ) : (
             listaFiltrada.map((elemento) => (
               <div className="card" key={elemento.id}>
                 <div className="card-body">
                   <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
-                  <p className="card-text">Autor: {elemento.Autor}</p>
+                  <p className="card-text">Direccion: {elemento.Direccion}</p>
                   <p className="card-text">Descripción: {elemento.Descripcion}</p>
-                  <p className="card-text">Año: {elemento.año}</p>
+                  <p className="card-text">Precio: {elemento.Precio}</p>
                 </div>
                 <div className="card-footer">
                   <button
-                    onClick={() => ReservarLibro(elemento)}
+                    onClick={() => ReservarAlojamiento(elemento)}
                     className="btn btn-primary me-2"
                   >
                     Reservar

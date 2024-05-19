@@ -8,8 +8,8 @@ const Registro = () => {
   const [nombre, setNombre] = React.useState('')
   const [Descripcion, setDescripcion] = React.useState('');
   const [Disponibilidad, setDisponibilidad] = React.useState(true);
-  const [año, setAño] = React.useState('');
-  const [Autor, setAutor] = React.useState('');
+  const [Precio, setPrecio] = React.useState('');
+  const [Direccion, setDireccion] = React.useState('');
   const [id, setId] = React.useState('');
   const [busqueda, setBusqueda] = React.useState('');
 
@@ -21,7 +21,7 @@ const Registro = () => {
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const data = await db.collection('Libros').get()
+        const data = await db.collection('Alojamientos').get()
         const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         setLista(arrayData)
       } catch (error) {
@@ -38,27 +38,27 @@ const Registro = () => {
       setError("Ingrese el Nombre")
       return
     }
-    if (!Autor) {
-      setError("Ingrese el Autor")
+    if (!Direccion) {
+      setError("Ingrese la direccion")
       return
     }
     if (!Descripcion) {
       setError("Ingrese la Descripcion")
       return
     }
-    if (!año) {
-      setError("Ingrese el año")
+    if (!Precio) {
+      setError("Ingrese el Precio")
       return
     }
 
     //registrar en firebase
     try {
-      const dato = await db.collection('Libros').add({
+      const dato = await db.collection('Alojamientos').add({
         Nombre: nombre,
         Disponibilidad: true,
         Descripcion: Descripcion,
-        año: año,
-        Autor: Autor,
+        Precio: Precio,
+        Direccion: Direccion,
       })
       setLista([
         ...lista,
@@ -66,8 +66,8 @@ const Registro = () => {
           Nombre: nombre,
           Disponibilidad: true,
           Descripcion: Descripcion,
-          año: año,
-          Autor: Autor,
+          Precio: Precio,
+          Direccion: Direccion,
           id: dato.id
         }
       ])
@@ -75,14 +75,14 @@ const Registro = () => {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'El libro se ha registrado con éxito',
+        title: 'El Alojamiento se ha registrado con éxito',
         showConfirmButton: false,
         timer: 1500
       })
       setNombre('')
-      setAutor('')
+      setDireccion('')
       setDescripcion('')
-      setAño('')
+      setPrecio('')
       setError(null)
     } catch (error) {
       console.error(error);
@@ -108,12 +108,12 @@ const Registro = () => {
     }
 
     try {
-      await db.collection('Libros').doc(elemento.id).delete()
+      await db.collection('Alojamientos').doc(elemento.id).delete()
       const listaFiltrada = lista.filter(libro => libro.id !== elemento.id);
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'El libro se ha eliminado con éxito',
+        title: 'El Alojamiento se ha eliminado con éxito',
         showConfirmButton: false,
         timer: 1500
       })
@@ -130,9 +130,9 @@ const Registro = () => {
   const editar = (elemento) => {
     setModoEdicion(true)//activamos el modo edición
     setNombre(elemento.Nombre);
-    setAutor(elemento.Autor);
+    setDireccion(elemento.Direccion);
     setDescripcion(elemento.Descripcion);
-    setAño(elemento.año);
+    setPrecio(elemento.Precio);
     setId(elemento.id);
     setDisponibilidad(elemento.Disponibilidad);
   }
@@ -145,26 +145,26 @@ const Registro = () => {
       setError("Ingrese el Nombre")
       return
     }
-    if (!Autor) {
-      setError("Ingrese el Autor")
+    if (!Direccion) {
+      setError("Ingrese el Direccion")
       return
     }
     if (!Descripcion) {
       setError("Ingrese la Descripcion")
       return
     }
-    if (!año) {
-      setError("Ingrese el año")
+    if (!Precio) {
+      setError("Ingrese el Precio")
       return
     }
     try {
 
-      await db.collection('Libros').doc(id).update({
+      await db.collection('Alojamientos').doc(id).update({
         Nombre: nombre,
         Disponibilidad: Disponibilidad,
         Descripcion: Descripcion,
-        año: año,
-        Autor: Autor,
+        Precio: Precio,
+        Direccion: Direccion,
       })
       Swal.fire({
         position: 'center',
@@ -173,14 +173,14 @@ const Registro = () => {
         showConfirmButton: false,
         timer: 1500
       })
-      const listaEditada = lista.map(elemento => elemento.id === id ? { id, Nombre: nombre, Disponibilidad, Autor, Descripcion, año } : elemento
+      const listaEditada = lista.map(elemento => elemento.id === id ? { id, Nombre: nombre, Disponibilidad, Direccion, Descripcion, Precio } : elemento
       )
 
       setLista(listaEditada); //listamos nuevos valores
       setModoEdicion(false);
-      setAutor('');
+      setDireccion('');
       setDescripcion('');
-      setAño('');
+      setPrecio('');
       setId('');
       setNombre('');
       setError(null);
@@ -202,7 +202,7 @@ const Registro = () => {
     <div className='Registro-libro'>
       {
         modoedicion ? <h2 className='text-center text-success'>Editando Libro</h2> :
-          <h2 className='text-center text-primary'>Registro Libros</h2>
+          <h2 className='text-center text-primary'>Registro Alojamientos</h2>
       }
 
       <form onSubmit={modoedicion ? editarDatos : guardarDatos}>
@@ -223,10 +223,10 @@ const Registro = () => {
 
 
         <input type="text"
-          placeholder='Ingrese el autor'
+          placeholder='Ingrese el Direccion'
           className='form-control mb-2'
-          onChange={(e) => { setAutor(e.target.value) }}
-          value={Autor}
+          onChange={(e) => { setDireccion(e.target.value) }}
+          value={Direccion}
         />
 
         <input type="text"
@@ -237,10 +237,10 @@ const Registro = () => {
         />
 
         <input type="number"
-          placeholder='Ingrese el año'
+          placeholder='Ingrese el Precio'
           className='form-control mb-2'
-          onChange={(e) => { setAño(e.target.value.trim()) }}
-          value={año}
+          onChange={(e) => { setPrecio(e.target.value.trim()) }}
+          value={Precio}
         />
 
         <div className='d-grid gap-2'>
@@ -252,13 +252,13 @@ const Registro = () => {
         </div>
       </form>
 
-      <h2 className='text-center'>Listado de Libros Registrados</h2>
+      <h2 className='text-center'>Listado de Alojamientos Registrados</h2>
 
       <div className="busqueda">
         <input
           className='form-control'
           type="text"
-          placeholder="Buscar libro"
+          placeholder="Buscar alojamineto"
           value={busqueda}
           onChange={BuscarLibro}
         />
@@ -271,9 +271,9 @@ const Registro = () => {
             <div className="card" key={elemento.id}>
               <div className="card-body">
                 <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
-                <p className="card-text">Autor: {elemento.Autor}</p>
+                <p className="card-text">Direccion: {elemento.Direccion}</p>
                 <p className="card-text">Descripción: {elemento.Descripcion}</p>
-                <p className="card-text">Año: {elemento.año}</p>
+                <p className="card-text">Precio: ${elemento.Precio}</p>
                 <p className="card-text">Estado: {elemento.Disponibilidad ? "Disponible" : "Reservado"}</p>
               </div>
               <div className="card-footer">

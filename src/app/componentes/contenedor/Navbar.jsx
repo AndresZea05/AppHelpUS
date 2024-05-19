@@ -38,18 +38,12 @@ const Navbar = (props) => {
           <li>
             {" "}
             {props.firebaseUser !== null && props.firebaseRol === "Admin" ? (
-              <Link className="btn_login" to="/admin">
+              <Link id="btnadmin" to="/admin">
                 Admin
               </Link>
             ) : null}
           </li>
-          <li>
-            {props.firebaseUser !== null && props.firebaseRol === "Usuario" ? (
-              <Link to="/reservas">
-                Reservar alojamiento
-              </Link>
-            ) : null}
-          </li>
+          
           <li>
             {props.firebaseUser !== null && props.firebaseRol === "Usuario" ? (
               <Link  to="/Misreservas">

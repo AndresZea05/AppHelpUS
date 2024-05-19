@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../../../assets/css/Servicio.css';
 import MapsViews from './MapsViews';
+import Reservas from './alojamientos/Reservas';
 
 const Servicio = () => {
   const [center, setCenter] = useState({ lat: 10.994360364475032, lng: -74.790640111464 });
@@ -62,7 +63,14 @@ const Servicio = () => {
       <div className="mapcontainerprin">
         <div className="mapacontainer">
           <MapsViews center={center} />
+         
         </div>
+
+      </div>
+      <div>
+        <br /><br />
+      <Reservas/>
+      <br />
       </div>
     </div>
   );

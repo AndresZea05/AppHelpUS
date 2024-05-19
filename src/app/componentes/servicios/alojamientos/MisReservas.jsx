@@ -39,11 +39,11 @@ const Reservas = () => {
 
 
 
-    const DevolverLibro = async (elemento) => {
+    const DevolverAlojaiento = async (elemento) => {
 
         try {
             const usuario = user.email;
-            await db.collection('Libros').doc(elemento.idlibro).update({
+            await db.collection('Alojamientos').doc(elemento.idalojamiento).update({
                 Disponibilidad: true
             });
 
@@ -54,7 +54,7 @@ const Reservas = () => {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'El libro se ha devuelto',
+                title: 'El Alojamiento se ha devuelto',
                 showConfirmButton: false,
                 timer: 1500
             })
@@ -66,7 +66,7 @@ const Reservas = () => {
 
     return (
         <div className='MisReservas'>
-            <h3>Mis Libros</h3>
+            <h3>Mis Alojamientos</h3>
             <div className="contenedor-cards">
                 <div className="card-grid">
                     {
@@ -74,17 +74,17 @@ const Reservas = () => {
                             <div className="card" key={elemento.id}>
                                 <div className="card-body">
                                     <h5 className="card-title">Nombre: {elemento.Nombres}</h5>
-                                    <p className="card-text">Autor: {elemento.Autor}</p>
+                                    <p className="card-text">Direccion: {elemento.Direccion}</p>
                                     <p className="card-text">Descripción: {elemento.Descripcion}</p>
-                                    <p className="card-text">Año: {elemento.año}</p>
+                                    <p className="card-text">Precio: {elemento.Precio}</p>
                                 </div>
                                 <div className="card-footer">
-                                    <button onClick={() => DevolverLibro(elemento)} className="btn btn-warning me-2">
+                                    <button onClick={() => DevolverAlojaiento(elemento)} className="btn btn-warning me-2">
                                         Devolver
                                     </button>
                                 </div>
                             </div>
-                        )) : <div className="NORESERVAS">No hay libros reservados</div>
+                        )) : <div className="NORESERVAS">No hay Alojamientos reservados</div>
 
                     }
                 </div>
