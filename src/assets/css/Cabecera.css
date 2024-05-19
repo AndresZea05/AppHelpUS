@@ -1,0 +1,105 @@
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3AB0C8;
+  color: white;
+  padding: 10px;
+}
+
+.btn_login{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: #3AB0C8;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.cabecera__logo {
+  display: flex;
+  margin-left: 50px;
+}
+
+.nombrelogo {
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
+.cabecera__logo img {
+  width: 35.8px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+.cabecera__nav {
+  margin-right: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#dentroboton{
+  color: #3AB0C8;
+  font-family: "Paytone One", sans-serif;
+  
+}
+#btnsecion{
+  color: #3AB0C8;
+  font-family: "Paytone One", sans-serif;
+}
+
+
+.cabecera__nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecera__nav li {
+  margin-left: 20px;
+  list-style-type: none;
+}
+
+.cabecera__nav a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px; /* Ajuste del espacio interior */
+  }
+
+  .cabecera__logo {
+    margin-left: 20px; /* Reducción del margen */
+    margin-bottom: 10px; /* Espacio inferior */
+  }
+
+  .cabecera__nav {
+    margin-right: 0; /* Eliminar margen derecho */
+  }
+
+  .cabecera__nav ul {
+    flex-direction: column;
+    margin-top: 10px;  }
+
+  .cabecera__nav li {
+    margin-left: 0;
+    margin-top: 10px;
+    list-style-type: none;
+  }
+}
