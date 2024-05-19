@@ -1,5 +1,6 @@
 import React from 'react'
 import { db } from '../../../../firebase'
+import '../../../../assets/css/registro.css';
 
 const Registro = () => {
   //hooks
@@ -276,10 +277,10 @@ const Registro = () => {
                 <p className="card-text">Estado: {elemento.Disponibilidad ? "Disponible" : "Reservado"}</p>
               </div>
               <div className="card-footer">
-                <button onClick={() => eliminarDato(elemento)} className="btn btn-danger me-2">
+                <button onClick={() => eliminarDato(elemento)} className="btn btn-danger me-2" id='btneli'>
                   Eliminar
                 </button>
-                <button onClick={() => editar(elemento)} className="btn btn-warning me-2">
+                <button onClick={() => editar(elemento)} className="btn btn-warning me-2" id='btnedi'>
                   Editar
                 </button>
               </div>

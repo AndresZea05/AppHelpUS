@@ -1,0 +1,227 @@
+/* Estilos generales */
+.Registro-libro {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Títulos */
+  h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  
+  .text-success {
+    color: #28a745;
+  }
+  
+  /* Formulario */
+  .form-control {
+    margin-bottom: 10px;
+    
+  }
+  
+  .alert {
+    margin-bottom: 20px;
+  }
+  
+  /* Botones */
+  .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-outline-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+  }
+  
+  .btn-outline-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+  }
+  
+  .btn-outline-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  /* Búsqueda */
+  .busqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #007bff;
+  }
+  
+  /* Tarjetas */
+  .contenedor-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Títulos (sin cambios) */
+
+/* Formulario */
+.form-control {
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 30%;
+  margin-left: 10px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #007bff;
+  border-color: #007bff;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+/* Botones */
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: white;
+}
+
+.btn-outline-info {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+}
+
+.btn-outline-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-outline-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+/* Búsqueda (sin cambios) */
+
+/* Tarjetas (sin cambios) */
+
+/* Estilos agregados */
+.input-group {
+  margin-bottom: 15px;
+  
+}
+
+.input-group-prepend {
+  background-color: #f0f0f0;
+  border-radius: 4px 0 0 4px;
+  padding: 10px 15px;
+  
+}
+
+.input-group-text {
+  background-color: #f0f0f0;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  
+}
+
+.input-group-append {
+  background-color: #f0f0f0;
+  border-radius: 0 4px 4px 0;
+  padding: 10px 15px;
+  
+}
+
+#btneli {
+  background-color: #dc3545;
+  
+}
+
+#btnedi {
+  background-color: #28a745;
+ 
+}
+  
