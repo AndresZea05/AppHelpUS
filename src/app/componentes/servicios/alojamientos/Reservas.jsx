@@ -2,6 +2,10 @@ import React from 'react';
 import { auth, db } from '../../../../firebase';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+import 'moment/locale/es';
+
+moment.locale('es'); // Establecer el idioma globalmente
 
 const Reservas = () => {
   const navigate = useNavigate();
@@ -42,7 +46,10 @@ const Reservas = () => {
         Precio: elemento.Precio,
         Descripcion: elemento.Descripcion,
         Direccion: elemento.Direccion,
-        Imagen: elemento.Imagen,  // Añadir campo Imagen
+        Imagen: elemento.Imagen,
+        MetroCuadrado: elemento.MetroCuadrado,
+        Requisitos: elemento.Requisitos,
+        FechaCreacion: elemento.FechaCreacion
       });
 
       await db.collection('Alojamientos').doc(elemento.id).update({
@@ -95,13 +102,19 @@ const Reservas = () => {
           ) : (
             listaFiltrada.map((elemento) => (
               <div className="card" key={elemento.id}>
-                
                 <div className="card-body">
-                {elemento.Imagen && <img src={elemento.Imagen} alt={elemento.Nombre} className="cardimg" />}
+                  {elemento.Imagen && <img src={elemento.Imagen} alt={elemento.Nombre} className="cardimg" />}
                   <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
                   <p className="card-text">Dirección: {elemento.Direccion}</p>
                   <p className="card-text">Descripción: {elemento.Descripcion}</p>
                   <p className="card-text">Precio: ${elemento.Precio}</p>
+                  <p className="card-text">Metros Cuadrados: {elemento.MetroCuadrado} m²</p>
+                  <p className="card-text">Requisitos: {elemento.Requisitos}</p>
+                  {elemento.FechaCreacion ? (
+                    <p className="card-text">Subido hace: {moment(elemento.FechaCreacion.toDate ? elemento.FechaCreacion.toDate() : elemento.FechaCreacion).fromNow()}</p>
+                  ) : (
+                    <p className="card-text">Fecha de creación no disponible</p>
+                  )}
                 </div>
                 <div className="card-footer">
                   <button

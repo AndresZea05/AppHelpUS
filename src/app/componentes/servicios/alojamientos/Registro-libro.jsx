@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { db, storage } from '../../../../firebase'; // Asegúrate de importar storage
+import { db, storage } from '../../../../firebase';
 import '../../../../assets/css/registro.css';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+import 'moment/locale/es';
+
+moment.locale('es'); // Establecer el idioma globalmente
 
 const Registro = () => {
   const [lista, setLista] = useState([]);
@@ -10,6 +14,8 @@ const Registro = () => {
   const [disponibilidad, setDisponibilidad] = useState(true);
   const [precio, setPrecio] = useState('');
   const [direccion, setDireccion] = useState('');
+  const [metroCuadrado, setMetroCuadrado] = useState('');
+  const [requisitos, setRequisitos] = useState('');
   const [id, setId] = useState('');
   const [busqueda, setBusqueda] = useState('');
   const [modoEdicion, setModoEdicion] = useState(false);
@@ -45,12 +51,13 @@ const Registro = () => {
 
   const guardarDatos = async (e) => {
     e.preventDefault();
-    if (!nombre || !direccion || !descripcion || !precio) {
+    if (!nombre || !direccion || !descripcion || !precio || !metroCuadrado || !requisitos) {
       setError("Todos los campos son obligatorios");
       return;
     }
 
     const imageUrl = await uploadImage();
+    const fechaCreacion = new Date();
 
     try {
       const dato = await db.collection('Alojamientos').add({
@@ -59,7 +66,10 @@ const Registro = () => {
         Descripcion: descripcion,
         Precio: precio,
         Direccion: direccion,
-        Imagen: imageUrl
+        MetroCuadrado: metroCuadrado,
+        Requisitos: requisitos,
+        Imagen: imageUrl,
+        FechaCreacion: fechaCreacion
       });
 
       setLista([...lista, {
@@ -68,7 +78,10 @@ const Registro = () => {
         Descripcion: descripcion,
         Precio: precio,
         Direccion: direccion,
+        MetroCuadrado: metroCuadrado,
+        Requisitos: requisitos,
         Imagen: imageUrl,
+        FechaCreacion: fechaCreacion,
         id: dato.id
       }]);
 
@@ -84,6 +97,8 @@ const Registro = () => {
       setDireccion('');
       setDescripcion('');
       setPrecio('');
+      setMetroCuadrado('');
+      setRequisitos('');
       setImagen(null);
       setError(null);
     } catch (error) {
@@ -129,6 +144,8 @@ const Registro = () => {
     setDireccion(elemento.Direccion);
     setDescripcion(elemento.Descripcion);
     setPrecio(elemento.Precio);
+    setMetroCuadrado(elemento.MetroCuadrado);
+    setRequisitos(elemento.Requisitos);
     setId(elemento.id);
     setDisponibilidad(elemento.Disponibilidad);
     setImagen(null); // reset image field
@@ -136,7 +153,7 @@ const Registro = () => {
 
   const editarDatos = async (e) => {
     e.preventDefault();
-    if (!nombre || !direccion || !descripcion || !precio) {
+    if (!nombre || !direccion || !descripcion || !precio || !metroCuadrado || !requisitos) {
       setError("Todos los campos son obligatorios");
       return;
     }
@@ -150,6 +167,8 @@ const Registro = () => {
         Descripcion: descripcion,
         Precio: precio,
         Direccion: direccion,
+        MetroCuadrado: metroCuadrado,
+        Requisitos: requisitos,
         ...(imageUrl && { Imagen: imageUrl }) // only update image if a new one was uploaded
       });
 
@@ -162,7 +181,7 @@ const Registro = () => {
       });
 
       const listaEditada = lista.map(elemento =>
-        elemento.id === id ? { id, Nombre: nombre, Disponibilidad: disponibilidad, Direccion: direccion, Descripcion: descripcion, Precio: precio, ...(imageUrl && { Imagen: imageUrl }) } : elemento
+        elemento.id === id ? { id, Nombre: nombre, Disponibilidad: disponibilidad, Direccion: direccion, Descripcion: descripcion, Precio: precio, MetroCuadrado: metroCuadrado, Requisitos: requisitos, ...(imageUrl && { Imagen: imageUrl }) } : elemento
       );
 
       setLista(listaEditada);
@@ -171,6 +190,8 @@ const Registro = () => {
       setDireccion('');
       setDescripcion('');
       setPrecio('');
+      setMetroCuadrado('');
+      setRequisitos('');
       setImagen(null);
       setError(null);
     } catch (error) {
@@ -195,6 +216,8 @@ const Registro = () => {
         <input type="text" placeholder='Ingrese la Direccion' className='form-control mb-2' onChange={(e) => { setDireccion(e.target.value) }} value={direccion} />
         <input type="text" placeholder='Ingrese la Descripción' className='form-control mb-2' onChange={(e) => { setDescripcion(e.target.value) }} value={descripcion} />
         <input type="number" placeholder='Ingrese el Precio' className='form-control mb-2' onChange={(e) => { setPrecio(e.target.value.trim()) }} value={precio} />
+        <input type="number" placeholder='Ingrese los Metros Cuadrados' className='form-control mb-2' onChange={(e) => { setMetroCuadrado(e.target.value) }} value={metroCuadrado} />
+        <input type="text" placeholder='Ingrese los Requisitos' className='form-control mb-2' onChange={(e) => { setRequisitos(e.target.value) }} value={requisitos} />
         <input type="file" className='form-control mb-2' onChange={handleImageChange} />
 
         <div className='d-grid gap-2'>
@@ -202,26 +225,26 @@ const Registro = () => {
         </div>
       </form>
 
-      <h2 className='text-center'>Listado de Alojamientos Registrados</h2>
-
-      <div className="busqueda">
-        <input className='form-control' type="text" placeholder="Buscar alojamiento" value={busqueda} onChange={buscarLibro} />
-      </div>
-
-      <div className="contenedor-cards">
+      <h2 className='text-center mt-4'>Listado de Alojamientos</h2>
+      <input type="text" placeholder='Buscar por nombre' className='form-control mb-4' onChange={buscarLibro} value={busqueda} />
+      <div className="container-card">
         <div className="card-grid">
           {listaFiltrada.map((elemento) => (
             <div className="card" key={elemento.id}>
               <div className="card-body">
-                               
                 {elemento.Imagen && <img src={elemento.Imagen} alt={elemento.Nombre} className="cardimg" />}
-               
                 <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
-                <p className="card-text">Direccion: {elemento.Direccion}</p>
+                <p className="card-text">Dirección: {elemento.Direccion}</p>
                 <p className="card-text">Descripción: {elemento.Descripcion}</p>
                 <p className="card-text">Precio: ${elemento.Precio}</p>
-                
+                <p className="card-text">Metros Cuadrados: {elemento.MetroCuadrado} m²</p>
+                <p className="card-text">Requisitos: {elemento.Requisitos}</p>
                 <p className="card-text">Estado: {elemento.Disponibilidad ? "Disponible" : "Reservado"}</p>
+                {elemento.FechaCreacion ? (
+                  <p className="card-text">Subido hace: {moment(elemento.FechaCreacion.toDate ? elemento.FechaCreacion.toDate() : elemento.FechaCreacion).fromNow()}</p>
+                ) : (
+                  <p className="card-text">Fecha de creación no disponible</p>
+                )}
               </div>
               <div className="card-footer">
                 <button onClick={() => eliminarDato(elemento)} className="btn btn-danger me-2" id='btneli'>Eliminar</button>

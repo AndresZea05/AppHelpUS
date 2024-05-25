@@ -2,8 +2,12 @@ import React from 'react';
 import { auth, db } from '../../../../firebase';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+import 'moment/locale/es';
 
-const Reservas = () => {
+moment.locale('es'); // Establecer el idioma globalmente
+
+const MisReservas = () => {
   const navigate = useNavigate();
   const [user, setUser] = React.useState(null);
   const [lista, setLista] = React.useState([]);
@@ -61,19 +65,24 @@ const Reservas = () => {
   return (
     <div className='MisReservas'>
       <h3>Mis Alojamientos</h3>
-     
       <div className="contenedor-cards">
         <div className="card-grid">
           {lista.length > 0 ? (
             lista.map((elemento) => (
               <div className="card" key={elemento.id}>
-               
                 <div className="card-body">
-                {elemento.Imagen && <img src={elemento.Imagen} alt={elemento.Nombres} className="cardimg" />}
+                  {elemento.Imagen && <img src={elemento.Imagen} alt={elemento.Nombres} className="cardimg" />}
                   <h5 className="card-title">Nombre: {elemento.Nombres}</h5>
                   <p className="card-text">Dirección: {elemento.Direccion}</p>
                   <p className="card-text">Descripción: {elemento.Descripcion}</p>
                   <p className="card-text">Precio: {elemento.Precio}</p>
+                  <p className="card-text">Metros Cuadrados: {elemento.MetroCuadrado} m²</p>
+                  <p className="card-text">Requisitos: {elemento.Requisitos}</p>
+                  {elemento.FechaCreacion ? (
+                    <p className="card-text">Reservado hace: {moment(elemento.FechaCreacion.toDate ? elemento.FechaCreacion.toDate() : elemento.FechaCreacion).fromNow()}</p>
+                  ) : (
+                    <p className="card-text">Fecha de creación no disponible</p>
+                  )}
                 </div>
                 <div className="card-footer">
                   <button onClick={() => DevolverAlojamiento(elemento)} className="btn btn-warning me-2">
@@ -91,4 +100,4 @@ const Reservas = () => {
   );
 };
 
-export default Reservas;
+export default MisReservas;

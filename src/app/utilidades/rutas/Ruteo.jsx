@@ -7,7 +7,7 @@ import Admin from '../../componentes/login/Admin';
 import Reservas from '../../componentes/servicios/alojamientos/Reservas';
 import MisReservas from '../../componentes/servicios/alojamientos/MisReservas';
 import Servicio from '../../componentes/servicios/Servicio';
-
+import Cuenta from '../../componentes/login/Cuenta';
 
 const Ruteo = ({ firebaseRol }) => (
   <Routes>
@@ -17,6 +17,7 @@ const Ruteo = ({ firebaseRol }) => (
     <Route path='reservas' element={<Reservas />} />
     <Route path='Misreservas' element={<MisReservas />} />
     <Route path='servicio' element={<Servicio />} />
+    <Route path='cuenta' element={<Cuenta />} />
     
   </Routes>
 );
