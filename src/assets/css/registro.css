@@ -90,6 +90,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    padding: 20px 100px 100px 100px;
   }
   
   .card {
@@ -97,6 +98,7 @@
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    margin: 10px;
   }
   
   .card:hover {

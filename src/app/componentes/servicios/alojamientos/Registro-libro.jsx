@@ -227,7 +227,7 @@ const Registro = () => {
 
       <h2 className='text-center mt-4'>Listado de Alojamientos</h2>
       <input type="text" placeholder='Buscar por nombre' className='form-control mb-4' onChange={buscarLibro} value={busqueda} />
-      <div className="container-card">
+      <div className="contenedor-cards">
         <div className="card-grid">
           {listaFiltrada.map((elemento) => (
             <div className="card" key={elemento.id}>

@@ -1,4 +1,3 @@
-
 .cabecera {
   display: flex;
   justify-content: space-between;
@@ -8,12 +7,46 @@
   padding: 10px;
 }
 
+.navbar-toggler {
+  display: none;
+  background-color: #3AB0C8;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
 
-#btnadmin{
+.navbar-profile {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: -5px;
+  margin-top: 5px;
+}
+
+.navbar-profile-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+}
+
+#btnadmin {
   color: white;
 }
 
-.btn_login{
+.btn_login {
   display: inline-block;
   padding: 10px 20px;
   background-color: white;
@@ -25,7 +58,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-
 
 .cabecera__logo {
   display: flex;
@@ -50,18 +82,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-}
-#dentroboton{
-  color: #3AB0C8;
-  font-family: "Paytone One", sans-serif;
-  
-}
-#btnsecion{
+#dentroboton {
   color: #3AB0C8;
   font-family: "Paytone One", sans-serif;
 }
 
+#btnsecion {
+  color: #3AB0C8;
+  font-family: "Paytone One", sans-serif;
+}
 
 .cabecera__nav ul {
   display: flex;
@@ -86,25 +117,38 @@
   .cabecera {
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 20px; /* Ajuste del espacio interior */
+    padding: 10px 20px;
   }
 
   .cabecera__logo {
-    margin-left: 20px; /* Reducción del margen */
-    margin-bottom: 10px; /* Espacio inferior */
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navbar-toggler {
+    display: block;
   }
 
   .cabecera__nav {
-    margin-right: 0; /* Eliminar margen derecho */
+    display: none;
+    width: 100%;
+  }
+
+  .cabecera__nav.open {
+    display: flex;
+    flex-direction: column;
   }
 
   .cabecera__nav ul {
     flex-direction: column;
-    margin-top: 10px;  }
+    width: 100%;
+  }
 
   .cabecera__nav li {
     margin-left: 0;
     margin-top: 10px;
     list-style-type: none;
+    width: 100%;
+    text-align: left;
   }
 }

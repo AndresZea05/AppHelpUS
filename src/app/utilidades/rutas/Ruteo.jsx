@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Inicio from '../../componentes/contenedor/Inicio';
@@ -8,6 +7,7 @@ import Reservas from '../../componentes/servicios/alojamientos/Reservas';
 import MisReservas from '../../componentes/servicios/alojamientos/MisReservas';
 import Servicio from '../../componentes/servicios/Servicio';
 import Cuenta from '../../componentes/login/Cuenta';
+import MisAlojamientos from '../../componentes/servicios/alojamientos/Misalojamientos';
 
 const Ruteo = ({ firebaseRol }) => (
   <Routes>
@@ -18,7 +18,7 @@ const Ruteo = ({ firebaseRol }) => (
     <Route path='Misreservas' element={<MisReservas />} />
     <Route path='servicio' element={<Servicio />} />
     <Route path='cuenta' element={<Cuenta />} />
-    
+    <Route path='MisAlojamientos' element={<MisAlojamientos />} />
   </Routes>
 );
 

@@ -30,9 +30,14 @@ const Inicio = () => {
                 neque. Integer hendrerit fringilla est vel maximus. Nam vel
                 porta leo.
               </p>
+              <div className="botonvermasi">
+
+              
+
               <a href="#nosotros" className="boton boton-rojo">
                 Ver más
               </a>
+              </div>
             </div>
           </section>
 
@@ -65,7 +70,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_claro} alt="Image" />
@@ -77,7 +82,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_oscuro} alt="Image" />
@@ -89,7 +94,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_claro} alt="Image" />
@@ -101,7 +106,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_oscuro} alt="Image" />
@@ -113,7 +118,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_claro} alt="Image" />
@@ -125,7 +130,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_oscuro} alt="Image" />
@@ -137,7 +142,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_claro} alt="Image" />
@@ -149,7 +154,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_oscuro} alt="Image" />
@@ -161,7 +166,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_claro} alt="Image" />
@@ -173,7 +178,7 @@ const Inicio = () => {
                   <div>
                     <a href="/">
                       <h4>
-                        <small>Share Your Message</small>Watch
+                       
                       </h4>
                       <picture>
                         <img src={banner_oscuro} alt="Image" />
