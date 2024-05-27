@@ -1,0 +1,43 @@
+/* src/components/ChatWrapper.css */
+.chat-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+  }
+  
+  .chat-toggle-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .close-chat-button {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .close-chat-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -2,7 +2,7 @@ import React from 'react'
 import pexels from "../../../assets/imgInicio/pexels-fauxels-3184418.jpg";
 import banner_claro from "../../../assets/imgInicio/Banner_Claro.png";
 import banner_oscuro from "../../../assets/imgInicio/Banner_Oscuro.png";
-import mision from "../../../assets/imgInicio/Misión.jpg";
+import mision from "../../../assets/imgInicio/Mision.jpg";
 import Fotos_muestras_1 from "../../../assets/imgInicio/Fotos_muestras_1.jpg";
 import Fotos_muestras_4 from "../../../assets/imgInicio/Fotos_muestra_4.jpg";
 import Fotos_muestras_3 from "../../../assets/imgInicio/Fotos_muestra_3.jpg";
@@ -10,7 +10,8 @@ import Fotos_muestras_5 from "../../../assets/imgInicio/Fotos_muestras_1.jpg";
 import Fotos_muestras_2 from "../../../assets/imgInicio/Fotos_muestra_2.jpg";
 import Fotos_muestras_6 from "../../../assets/imgInicio/Fotos_muestra_6.jpg";
 import servicio2 from "../../../assets/imgInicio/Fotos_muestra_3.jpg";
-import visión from "../../../assets/imgInicio/Visión.jpg";
+import visión from "../../../assets/imgInicio/Vision.jpg";
+import ChatWrapper from '../chatbot/ChatWrapper'
 
 import "../../../assets/css/Inicio.css"
 const Inicio = () => {
@@ -23,7 +24,9 @@ const Inicio = () => {
 
             <div className="bloque-inicio">
               <h1>Bienvenidos a</h1>
+              
               <h1 className="paytone">Help Us!</h1>
+             
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 libero nibh, aliquam vel consectetur maximus, elementum eu
@@ -31,8 +34,10 @@ const Inicio = () => {
                 porta leo.
               </p>
               <div className="botonvermasi">
-
-              
+              <div className="clasechatbot">
+                <ChatWrapper/>
+              </div>
+              <br />
 
               <a href="#nosotros" className="boton boton-rojo">
                 Ver más
@@ -40,7 +45,7 @@ const Inicio = () => {
               </div>
             </div>
           </section>
-
+            <br />
           <div className="Carousel">
             <h2>GALERIA</h2>
             <div className="slick-list" id="slick-list">
@@ -246,25 +251,6 @@ const Inicio = () => {
                   </div>
                 </div>
 
-                <div className="columna columna-33 columna-mobile-100">
-                  <div className="bloque-servicio">
-                    <div className="bloque-img-servicio cuadrado-perfecto">
-                      <img src={servicio2} />
-                    </div>
-                    <div className="bloque-contenido-servicio">
-                      <h3>Servicio 2</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Donec libero nibh, aliquam vel consectetur maximus,
-                        elementum eu neque. Integer hendrerit fringilla est vel
-                        maximus. Nam vel porta leo.
-                      </p>
-                      <a href="#" className="boton boton-blanco">
-                        Ver más
-                      </a>
-                    </div>
-                  </div>
-                </div>
 
                 <div className="columna columna-33 columna-mobile-100">
                   <div className="bloque-servicio">
@@ -288,7 +274,7 @@ const Inicio = () => {
               </div>
             </div>
           </section>
-
+      <br />
           <section id="nosotros" className="seccion">
             <div className="containerPrincipal" id="acercade">
               <h1>Nuestra historia</h1>

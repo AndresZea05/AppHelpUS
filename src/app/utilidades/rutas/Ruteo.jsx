@@ -8,6 +8,7 @@ import MisReservas from '../../componentes/servicios/alojamientos/MisReservas';
 import Servicio from '../../componentes/servicios/Servicio';
 import Cuenta from '../../componentes/login/Cuenta';
 import MisAlojamientos from '../../componentes/servicios/alojamientos/Misalojamientos';
+import Chat from '../../componentes/chatbot/Chat';
 
 const Ruteo = ({ firebaseRol }) => (
   <Routes>
@@ -19,6 +20,7 @@ const Ruteo = ({ firebaseRol }) => (
     <Route path='servicio' element={<Servicio />} />
     <Route path='cuenta' element={<Cuenta />} />
     <Route path='MisAlojamientos' element={<MisAlojamientos />} />
+    <Route path='chat' element={<Chat />} />
   </Routes>
 );
 

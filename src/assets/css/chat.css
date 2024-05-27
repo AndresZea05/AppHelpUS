@@ -1,0 +1,164 @@
+/* src/components/Chat.css */
+@import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,500,900&display=swap");
+
+
+
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 32rem;
+  z-index: 2;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+}
+
+.contact.bar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.contact .pic {
+  width: 4rem;
+  height: 4rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.contact .name {
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.contact .seen {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.messages {
+  padding: 1rem;
+  background: #F7F7F7;
+  flex-shrink: 2;
+  overflow-y: auto;
+  box-shadow: inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05), inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
+}
+
+.messages .time {
+  font-size: 0.8rem;
+  background: #EEE;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+  color: #999;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.messages .message {
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  background: #FFF;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+  min-height: 2.25rem;
+  width: fit-content;
+  max-width: 66%;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.075), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+}
+
+.messages .message.user {
+  margin-left: auto;
+  background: #333;
+  color: white;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+}
+
+.messages .message.assistant {
+  margin-right: auto;
+  background: #EEE;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+}
+
+.messages .message .typing {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0rem;
+  box-sizing: border-box;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.messages .message .typing.typing-1 {
+  animation: typing 3s infinite;
+}
+
+.messages .message .typing.typing-2 {
+  animation: typing 3s 250ms infinite;
+}
+
+.messages .message .typing.typing-3 {
+  animation: typing 3s 500ms infinite;
+}
+
+.input {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.input i {
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.input i:hover {
+  color: #333;
+}
+
+.input input {
+  border: none;
+  background-image: none;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border-radius: 1.125rem;
+  flex-grow: 1;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1), 0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+.input input::placeholder {
+  color: #999;
+}
+
+@keyframes typing {
+  0%, 75%, 100% {
+    transform: translate(0, 0.25rem) scale(0.9);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(0, -0.25rem) scale(1);
+    opacity: 1;
+  }
+}
+
+.pic.stark {
+  background-image: url("../assets/img/Logo_azul.png");
+}
